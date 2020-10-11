@@ -1,10 +1,11 @@
 import React from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./theme/theme";
-import Grid from "@material-ui/core/Grid";
+import { Home } from "./pages";
+import 'fontsource-roboto';
 
 import "./App.css";
-import { Home } from "./pages";
+
 
 function App() {
   return (
