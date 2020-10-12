@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { Typography } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -28,9 +29,9 @@ const HomeLeft = () => {
       <Grid item xs={12} md={6}>
         <div className={classes.leftPart}>
           <ul className={classes.homeLeftList}>
-            <li>Читайте о том, что вам интересно.</li>
-            <li>Узнайте, о чем говорят в мире.</li>
-            <li>Присоединяйтесь к общению.</li>
+            <li><Typography>Читайте о том, что вам интересно.</Typography></li>
+            <li><Typography>Узнайте, о чем говорят в мире.</Typography></li>
+            <li><Typography>Присоединяйтесь к общению.</Typography></li>
           </ul>
         </div>
       </Grid>
