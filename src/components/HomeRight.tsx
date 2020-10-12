@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "column",
       justifyContent: 'center',
       alignItems: 'center',
-      height: "100vh"
+      height: "100vh",
     },
     homeRightIcon: {
       fontSize: 40
@@ -21,7 +21,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     homeRightButton: {
       width: '100%',
-      fontWeight: "bold"
+    },
+    homeRightTitle: {
+      fontSize: 32,
+      fontWeight: 700,
+      marginBottom: 45,
+      marginTop: 20
     }
   }),
 );
@@ -31,13 +36,13 @@ const HomeRight = () => {
 
   return (
     <>
-      <Grid item xs={12} md={6}>
+      <Grid item sm={12} md={6}>
         <div className={classes.homeRight}>
           <div className={classes.homeRightLogin}>
           <TwitterIcon color="primary" className={classes.homeRightIcon}/>
-          <Typography>Узнайте, что происходит в мире прямо сейчас</Typography>
-          <Typography>Присоединяйтесь к Твиттеру прямо сейчас!</Typography>
-          <Button className={classes.homeRightButton} variant="contained" color="primary">Зарегистрироваться</Button>
+          <Typography className={classes.homeRightTitle} variant="h4">Узнайте, что происходит в мире прямо сейчас</Typography>
+          <Typography><b>Присоединяйтесь к Твиттеру прямо сейчас!</b></Typography>
+          <Button className={classes.homeRightButton} style={{marginBottom: 20}} variant="contained" color="primary">Зарегистрироваться</Button>
           <Button className={classes.homeRightButton} variant="outlined" color="primary">Войти</Button>
           </div>
         </div>
