@@ -15,12 +15,13 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       backgroundColor: "#71C9F8",
       height: "100vh",
-      
-      overflow: 'hiden'
+      position: 'relative',
+      overflow: 'hidden',
     },
     homeLeftList: {
       color: "white",
       fontWeight: 600,
+      position: 'relative',
       fontSize: 20,
       width: 381,
       "& h6": {
@@ -38,10 +39,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     homeLeftBigIcon: {
       position: "absolute",
-      top: '-10%',
-      left: '10%',
-      width: "150%",
-      height: "150%"
+      // top: "70%",
+      // left: "100%",
+      // transform: "translate(-50%, -50%)",
+      // width: '250%',
+      // height: '250%'
+      top: "-30vh",
+      right: "-50vh",
+      height: "160vh",
+      width: "160vh"
     }
   })
 );
@@ -53,7 +59,7 @@ const HomeLeft = () => {
     <>
       <Grid item sm={12} md={6}>
         <div className={classes.leftPart}>
-        {/* <TwitterIcon className={classes.homeLeftBigIcon}/> */}
+        <TwitterIcon className={classes.homeLeftBigIcon} color="primary"/>
           <ul className={classes.homeLeftList}>
             <li>
               <SearchIcon className={classes.homeLeftIcon} />
