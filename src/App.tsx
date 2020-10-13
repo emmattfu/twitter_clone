@@ -5,13 +5,15 @@ import { Home } from "./pages";
 import 'fontsource-roboto';
 
 import "./App.css";
+import { Footer } from "./components";
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <div className="App" style={{position: 'relative'}}>
         <Home />
+        <Footer />
       </div>
     </ThemeProvider>
   );

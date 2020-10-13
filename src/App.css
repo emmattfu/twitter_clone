@@ -8,3 +8,12 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+.footer {
+  position: 'absolute';
+  height: 80px;
+  background-color: "white";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}

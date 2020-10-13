@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: 20,
       width: 381,
       "& h6": {
-        fontWeight: 700,
+        fontWeight: 600,
         fontSize: 20,
       },
       "& li": {
@@ -33,21 +33,19 @@ const useStyles = makeStyles((theme: Theme) =>
         alignItems: 'center'
       }
     },
+    homeLeftListItem: {
+      marginBottom: 40
+    },
     homeLeftIcon: {
       fontSize: 32,
       marginRight: 10
     },
     homeLeftBigIcon: {
       position: "absolute",
-      // top: "70%",
-      // left: "100%",
-      // transform: "translate(-50%, -50%)",
-      // width: '250%',
-      // height: '250%'
-      top: "-30vh",
-      right: "-50vh",
-      height: "160vh",
-      width: "160vh"
+      top: "-35vh",
+      right: "-55vh",
+      height: "170vh",
+      width: "170vh"
     }
   })
 );
@@ -61,19 +59,19 @@ const HomeLeft = () => {
         <div className={classes.leftPart}>
         <TwitterIcon className={classes.homeLeftBigIcon} color="primary"/>
           <ul className={classes.homeLeftList}>
-            <li>
+            <li className={classes.homeLeftListItem}>
               <SearchIcon className={classes.homeLeftIcon} />
               <Typography variant="h6">
                 Читайте о том, что вам интересно.
               </Typography>
             </li>
-            <li>
+            <li className={classes.homeLeftListItem}>
               <PeopleOutlineIcon className={classes.homeLeftIcon}/>
               <Typography variant="h6">
                 Узнайте, о чем говорят в мире.
               </Typography>
             </li>
-            <li>
+            <li className={classes.homeLeftListItem}>
               <ChatBubbleOutlineIcon className={classes.homeLeftIcon}/>
               <Typography variant="h6">Присоединяйтесь к общению.</Typography>
             </li>

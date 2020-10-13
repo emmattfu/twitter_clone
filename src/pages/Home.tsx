@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 
 const Home = () => {
   return (
-    <div className="home">
+    <div className="home" style={{position: 'relative'}}>
       <Grid container>
         <HomeLeft />
         <HomeRight />
