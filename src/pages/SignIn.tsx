@@ -1,16 +1,16 @@
 import React from "react";
-import { HomeLeft, HomeRight } from "../components";
+import { SignInLeft, SignInRight } from "../components";
 import Grid from "@material-ui/core/Grid";
 
-const Home = () => {
+const SingIn = () => {
   return (
     <div className="home" style={{position: 'relative'}}>
       <Grid container>
-        <HomeLeft />
-        <HomeRight />
+        <SignInLeft />
+        <SignInRight />
       </Grid>
     </div>
   );
 };
 
-export default Home
+export default SingIn

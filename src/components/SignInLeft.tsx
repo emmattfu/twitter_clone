@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: "#71C9F8",
-      height: "100vh",
+      height: "calc(100vh - 84px)",
       position: 'relative',
       overflow: 'hidden',
     },
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: 20,
       width: 381,
       "& h6": {
-        fontWeight: 600,
+        fontWeight: 700,
         fontSize: 20,
       },
       "& li": {
@@ -42,10 +42,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     homeLeftBigIcon: {
       position: "absolute",
-      top: "-35vh",
-      right: "-55vh",
-      height: "170vh",
-      width: "170vh"
+      top: "-40vh",
+      right: "-60vh",
+      height: "175vh",
+      width: "175vh"
     }
   })
 );
