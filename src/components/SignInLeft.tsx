@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const HomeLeft = () => {
+const SingInLeft = () => {
   const classes = useStyles();
 
   return (
@@ -82,4 +82,4 @@ const HomeLeft = () => {
   );
 };
 
-export default HomeLeft;
+export default SingInLeft;

@@ -67,6 +67,7 @@ export const theme = createMuiTheme({
     MuiDialog: {
       paper: {
         borderRadius: 15,
+        width: 600
       },
     },
     MuiDialogActions: {
@@ -76,13 +77,13 @@ export const theme = createMuiTheme({
     },
     MuiDialogTitle: {
       root: {
-        borderBottom: '1px solid rgb(204, 214, 221)',
         marginBottom: 10,
-        padding: '10px 15px',
+        padding: '0 25px',
         '& h2': {
           display: 'flex',
           alignItems: 'center',
-          fontWeight: 800,
+          fontWeight: 700,
+          fontSize: 23
         },
         '& button': {
           padding: 8,

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./theme/theme";
-import { SignIn, Login } from "./pages";
+import { SignIn, Login, Home } from "./pages";
 
 import "./App.css";
 import { Footer } from "./components";
@@ -18,6 +18,7 @@ function App() {
               <Footer />
             </Route>
             <Route exact component={Login} path="/login" />
+            <Route exact component={Home} path="/home" />
           </Switch>
         </div>
       </BrowserRouter>

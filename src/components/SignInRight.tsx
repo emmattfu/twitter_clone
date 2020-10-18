@@ -4,14 +4,9 @@ import Grid from "@material-ui/core/Grid";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Button, Typography } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import RegisterDialog from "./RegisterDialog";
 
-const useStyles = makeStyles((theme: Theme) =>
+export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     homeRight: {
       display: "flex",
@@ -40,6 +35,16 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: 15,
       fontWeight: 700,
     },
+    RegisterDialogIcon: {
+      alignSelf: "center", 
+      fontSize: 28, 
+      marginTop: 10,
+      marginBottom: 25
+    },
+    RegisterDialogTitle: {
+      fontSize: 23, 
+      fontWeight: 700
+    }
   })
 );
 
@@ -89,36 +94,7 @@ const HomeRight = () => {
             </NavLink>
           </div>
 
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="form-dialog-title"
-          >
-            <DialogTitle id="form-dialog-title">Создайте учетную запись</DialogTitle>
-            <DialogContent>
-              <TextField
-                margin="dense"
-                id="name"
-                label="Email Address"
-                type="email"
-                fullWidth
-              />
-            </DialogContent>
-            <DialogContent>
-              <TextField
-                margin="dense"
-                id="password"
-                label="Password"
-                type="password"
-                fullWidth
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} color="primary" fullWidth variant="contained">
-               Далее
-              </Button>
-            </DialogActions>
-          </Dialog>
+          <RegisterDialog open={open} handleClose={handleClose} />
         </div>
       </Grid>
     </>
