@@ -4,7 +4,7 @@ import {
   IconButton,
   Typography,
   InputBase,
-  Paper
+  Paper,
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -12,6 +12,7 @@ import {
   Theme,
   withStyles,
 } from "@material-ui/core/styles";
+
 import Grid from "@material-ui/core/Grid";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import HomeIcon from "@material-ui/icons/Home";
@@ -22,9 +23,44 @@ import BookMarkIcon from "@material-ui/icons/TurnedInNot";
 import ListIcon from "@material-ui/icons/ListAlt";
 import PersonIcon from "@material-ui/icons/PersonOutline";
 import MoreIcon from "@material-ui/icons/MoreHorizOutlined";
+import { Tweet } from "../components";
 
-const useHomeStyles = makeStyles((theme: Theme) =>
+export const useHomeStyles = makeStyles((theme: Theme) =>
   createStyles({
+    tweetsWrapper: {
+      height: "100%",
+      borderBottom: "none",
+      borderTop: "none",
+    },
+    tweetsHeaderText: {
+      padding: "15px 15px",
+      fontSize: 19,
+      fontWeight: 800,
+    },
+    tweetsHeader: {
+      borderLeft: "none",
+      borderRight: "none",
+      borderTop: "none",
+    },
+    tweet: {
+      cursor: "pointer",
+      "&:hover": {
+        backgroundColor: "rgb(245, 248, 250)",
+      },
+    },
+    tweetFooter: {
+      display: "flex",
+      justifyContent: "space-between",
+      width: 400,
+      marginLeft: -10,
+    },
+    tweetFooterIcon: {
+      fontSize: 20,
+    },
+    tweetFooterNumber: {
+      fontSize: 13,
+      fontWeight: 400,
+    },
     homeListText: {
       fontSize: 19,
       color: "black",
@@ -47,9 +83,12 @@ const useHomeStyles = makeStyles((theme: Theme) =>
         backgroundColor: "rgba(29, 161, 242, .1)",
         borderRadius: 30,
         paddingRight: 40,
-        "& MuiIconButton": {
-          color: "rgb(29, 161, 242)",
+        "& h6": {
+          color: "rgb(29, 161, 242)"
         },
+        "& svg": {
+          color: "rgb(29, 161, 242)"
+        }
       },
     },
   })
@@ -71,7 +110,7 @@ const Home = () => {
 
   return (
     <Container maxWidth="lg">
-      <Grid container>
+      <Grid container spacing={3}>
         <Grid item xs={3}>
           <ul>
             <li>
@@ -181,7 +220,23 @@ const Home = () => {
           </ul>
         </Grid>
         <Grid item xs={6}>
-          <Paper style={{height: "100%", borderBottom: 'none', borderTop: 'none'}} variant="outlined"></Paper>
+          <Paper className={classes.tweetsWrapper} variant="outlined">
+            <Paper className={classes.tweetsHeader} variant="outlined">
+              <Typography className={classes.tweetsHeaderText} variant="h6">
+                Главная
+              </Typography>
+            </Paper>
+            <Tweet
+              classes={classes}
+              user={{
+                fullname: "PlayStation",
+                username: "@PlayStation",
+                avatarURL:
+                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
+              }}
+              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
+            />
+          </Paper>
         </Grid>
         <Grid item xs={3}>
           <HomeSearchInput id="input-with-icon-textfield" fullWidth />
