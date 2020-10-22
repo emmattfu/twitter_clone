@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Container,
   Typography,
   InputBase,
   Paper,
+  Avatar,
+  TextareaAutosize,
+  IconButton,
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -13,8 +16,10 @@ import {
 } from "@material-ui/core/styles";
 
 import Grid from "@material-ui/core/Grid";
-
 import { Tweet, HomeList } from "../components";
+import EmotionIcon from '@material-ui/icons/InsertEmoticonOutlined';
+import ImageIcon from "@material-ui/icons/ImageOutlined";
+import CalendarIcon from '@material-ui/icons/DateRangeOutlined';
 
 export const useHomeStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -75,18 +80,29 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
         borderRadius: 30,
         paddingRight: 40,
         "& h6": {
-          color: "rgb(29, 161, 242)"
+          color: "rgb(29, 161, 242)",
         },
         "& svg": {
-          color: "rgb(29, 161, 242)"
-        }
+          color: "rgb(29, 161, 242)",
+        },
+      },
+    },
+    homeMakeTweet: {
+      padding: "15px 15px",
+    },
+    homeMakeTweetForm: {
+      width: "100%",
+      border: "none",
+      resize: "none",
+      "&:focus": {
+        outline: "none",
       },
     },
     tweetButton: {
       height: 45,
       fontSize: 15,
-      marginTop: 25
-    }
+      marginTop: 25,
+    },
   })
 );
 
@@ -102,13 +118,19 @@ const HomeSearchInput = withStyles((theme: Theme) =>
 )(InputBase);
 
 const Home = () => {
+  const [tweetText, setTweetText] = useState<string>('')
   const classes = useHomeStyles();
+
+  const tweetTextHandle = (e:React.ChangeEvent<HTMLTextAreaElement>):void => {
+    setTweetText(e.target.value)
+
+  }
 
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2}>
-        <Grid item xs={3} style={{padding: "0 40px"}}>
-          <HomeList classes={classes}/>
+        <Grid item xs={3} style={{ padding: "0 40px" }}>
+          <HomeList classes={classes} />
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.tweetsWrapper} variant="outlined">
@@ -116,6 +138,47 @@ const Home = () => {
               <Typography className={classes.tweetsHeaderText} variant="h6">
                 Главная
               </Typography>
+            </Paper>
+            <Paper className={classes.homeMakeTweet}>
+              <Grid container>
+                <Grid item xs={1}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                </Grid>
+                <Grid item xs={11}>
+                  <div>
+                    <TextareaAutosize
+                      className={classes.homeMakeTweetForm}
+                      aria-label="empty textarea"
+                      placeholder="Что происходит?"
+                      value={tweetText}
+                      onChange={tweetTextHandle}
+                    />
+                    <div>
+                      <IconButton
+                        color="primary"
+                        aria-label="upload picture"
+                        component="span"
+                      >
+                        <ImageIcon />
+                      </IconButton>
+                      <IconButton
+                        color="primary"
+                        aria-label="emotion"
+                        component="span"
+                      >
+                        <EmotionIcon />
+                      </IconButton>
+                      <IconButton
+                        color="primary"
+                        aria-label="calendar"
+                        component="span"
+                      >
+                        <CalendarIcon />
+                      </IconButton>
+                    </div>
+                  </div>
+                </Grid>
+              </Grid>
             </Paper>
             <Tweet
               classes={classes}
