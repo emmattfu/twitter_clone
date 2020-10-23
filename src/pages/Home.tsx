@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   Container,
   Typography,
@@ -7,6 +7,8 @@ import {
   Avatar,
   TextareaAutosize,
   IconButton,
+  CircularProgress,
+  Button
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -17,9 +19,10 @@ import {
 
 import Grid from "@material-ui/core/Grid";
 import { Tweet, HomeList } from "../components";
-import EmotionIcon from '@material-ui/icons/InsertEmoticonOutlined';
+import EmotionIcon from "@material-ui/icons/InsertEmoticonOutlined";
 import ImageIcon from "@material-ui/icons/ImageOutlined";
-import CalendarIcon from '@material-ui/icons/DateRangeOutlined';
+import CalendarIcon from "@material-ui/icons/DateRangeOutlined";
+import PlusIcon from "@material-ui/icons/ControlPoint";
 
 export const useHomeStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,7 +32,7 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       borderTop: "none",
     },
     tweetsHeaderText: {
-      padding: "15px 15px",
+      padding: "10px 15px",
       fontSize: 19,
       fontWeight: 800,
     },
@@ -98,6 +101,18 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
         outline: "none",
       },
     },
+    homeMakeTweetBottom: {
+      marginLeft: -5,
+      display: "flex",
+      justifyContent: 'space-between',
+      "& .MuiIconButton-root": {
+        padding: 6,
+      },
+    },
+    homeMakeTweetBottomRight: {
+      display: 'flex',
+      alignItems: 'center'
+    },
     tweetButton: {
       height: 45,
       fontSize: 15,
@@ -118,13 +133,12 @@ const HomeSearchInput = withStyles((theme: Theme) =>
 )(InputBase);
 
 const Home = () => {
-  const [tweetText, setTweetText] = useState<string>('')
+  const [tweetText, setTweetText] = useState<string>("");
   const classes = useHomeStyles();
 
-  const tweetTextHandle = (e:React.ChangeEvent<HTMLTextAreaElement>):void => {
-    setTweetText(e.target.value)
-
-  }
+  const tweetTextHandle = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    setTweetText(e.target.value);
+  };
 
   return (
     <Container maxWidth="lg">
@@ -153,28 +167,50 @@ const Home = () => {
                       value={tweetText}
                       onChange={tweetTextHandle}
                     />
-                    <div>
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <ImageIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="emotion"
-                        component="span"
-                      >
-                        <EmotionIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="calendar"
-                        component="span"
-                      >
-                        <CalendarIcon />
-                      </IconButton>
+                    <div className={classes.homeMakeTweetBottom}>
+                      <div>
+                        <IconButton
+                          color="primary"
+                          aria-label="upload picture"
+                          component="span"
+                        >
+                          <ImageIcon />
+                        </IconButton>
+                        <IconButton
+                          color="primary"
+                          aria-label="emotion"
+                          component="span"
+                        >
+                          <EmotionIcon />
+                        </IconButton>
+                        <IconButton
+                          color="primary"
+                          aria-label="calendar"
+                          component="span"
+                        >
+                          <CalendarIcon />
+                        </IconButton>
+                      </div>
+                      <div className={classes.homeMakeTweetBottomRight}>
+                        <CircularProgress
+                          variant="static"
+                          size={20}
+                          value={100}
+                        />
+                        <CircularProgress
+                          variant="static"
+                          size={20}
+                          value={100}
+                        />
+                        <div>|</div>
+                        <IconButton
+                          aria-label="plus"
+                          color="primary"
+                        >
+                          <PlusIcon />
+                        </IconButton>
+                        <Button variant="contained" color='primary'>Твитнуть</Button>
+                      </div>
                     </div>
                   </div>
                 </Grid>
