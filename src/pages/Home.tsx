@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Container,
   Typography,
   InputBase,
   Paper,
-  Avatar,
-  TextareaAutosize,
-  IconButton,
-  CircularProgress,
-  Button
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -18,11 +13,8 @@ import {
 } from "@material-ui/core/styles";
 
 import Grid from "@material-ui/core/Grid";
-import { Tweet, HomeList } from "../components";
-import EmotionIcon from "@material-ui/icons/InsertEmoticonOutlined";
-import ImageIcon from "@material-ui/icons/ImageOutlined";
-import CalendarIcon from "@material-ui/icons/DateRangeOutlined";
-import PlusIcon from "@material-ui/icons/ControlPoint";
+import { Tweet, HomeList, MakeTweet } from "../components";
+
 
 export const useHomeStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -97,6 +89,9 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       width: "100%",
       border: "none",
       resize: "none",
+      fontSize: 19,
+      lineHeight: 1.5,
+      fontFamily: 'Segoe UI',
       "&:focus": {
         outline: "none",
       },
@@ -104,14 +99,46 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
     homeMakeTweetBottom: {
       marginLeft: -5,
       display: "flex",
-      justifyContent: 'space-between',
+      justifyContent: "space-between",
       "& .MuiIconButton-root": {
         padding: 6,
       },
     },
     homeMakeTweetBottomRight: {
-      display: 'flex',
-      alignItems: 'center'
+      position: 'relative',
+      display: "flex",
+      alignItems: "center",
+    },
+    homeMakeTweetPlus: {
+      position: 'relative',
+      border: "1px solid #2FA9F3",
+      borderRadius: "50%",
+      width: 30,
+      height: 30,
+      cursor: "pointer",
+      margin: "0 10px",
+      "&:hover": {
+        backgroundColor: "#EDF0F2"
+      }
+    },
+    homeMakeTweetPlusIner: {
+      color: "#2FA9F3",
+      fontSize: 35,
+      fontWeight: 100,
+      position: 'absolute',
+      top: -12,
+      left: 3
+    },
+    progressBG: {
+      color: "#E6ECF0",
+      marginRight: 10,
+    },
+    progressTop: {
+      position: 'absolute',
+      marginRight: 10
+    },
+    homeMakedevideLine: {
+     
     },
     tweetButton: {
       height: 45,
@@ -133,12 +160,7 @@ const HomeSearchInput = withStyles((theme: Theme) =>
 )(InputBase);
 
 const Home = () => {
-  const [tweetText, setTweetText] = useState<string>("");
   const classes = useHomeStyles();
-
-  const tweetTextHandle = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    setTweetText(e.target.value);
-  };
 
   return (
     <Container maxWidth="lg">
@@ -153,70 +175,78 @@ const Home = () => {
                 Главная
               </Typography>
             </Paper>
-            <Paper className={classes.homeMakeTweet}>
-              <Grid container>
-                <Grid item xs={1}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                </Grid>
-                <Grid item xs={11}>
-                  <div>
-                    <TextareaAutosize
-                      className={classes.homeMakeTweetForm}
-                      aria-label="empty textarea"
-                      placeholder="Что происходит?"
-                      value={tweetText}
-                      onChange={tweetTextHandle}
-                    />
-                    <div className={classes.homeMakeTweetBottom}>
-                      <div>
-                        <IconButton
-                          color="primary"
-                          aria-label="upload picture"
-                          component="span"
-                        >
-                          <ImageIcon />
-                        </IconButton>
-                        <IconButton
-                          color="primary"
-                          aria-label="emotion"
-                          component="span"
-                        >
-                          <EmotionIcon />
-                        </IconButton>
-                        <IconButton
-                          color="primary"
-                          aria-label="calendar"
-                          component="span"
-                        >
-                          <CalendarIcon />
-                        </IconButton>
-                      </div>
-                      <div className={classes.homeMakeTweetBottomRight}>
-                        <CircularProgress
-                          variant="static"
-                          size={20}
-                          value={100}
-                        />
-                        <CircularProgress
-                          variant="static"
-                          size={20}
-                          value={100}
-                        />
-                        <div>|</div>
-                        <IconButton
-                          aria-label="plus"
-                          color="primary"
-                        >
-                          <PlusIcon />
-                        </IconButton>
-                        <Button variant="contained" color='primary'>Твитнуть</Button>
-                      </div>
-                    </div>
-                  </div>
-                </Grid>
-              </Grid>
-            </Paper>
+            <MakeTweet classes={classes} />
             <Tweet
+              classes={classes}
+              user={{
+                fullname: "PlayStation",
+                username: "@PlayStation",
+                avatarURL:
+                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
+              }}
+              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
+            />
+             <Tweet
+              classes={classes}
+              user={{
+                fullname: "PlayStation",
+                username: "@PlayStation",
+                avatarURL:
+                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
+              }}
+              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
+            />
+             <Tweet
+              classes={classes}
+              user={{
+                fullname: "PlayStation",
+                username: "@PlayStation",
+                avatarURL:
+                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
+              }}
+              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
+            />
+             <Tweet
+              classes={classes}
+              user={{
+                fullname: "PlayStation",
+                username: "@PlayStation",
+                avatarURL:
+                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
+              }}
+              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
+            />
+             <Tweet
+              classes={classes}
+              user={{
+                fullname: "PlayStation",
+                username: "@PlayStation",
+                avatarURL:
+                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
+              }}
+              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
+            />
+             <Tweet
+              classes={classes}
+              user={{
+                fullname: "PlayStation",
+                username: "@PlayStation",
+                avatarURL:
+                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
+              }}
+              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
+            />
+             <Tweet
+              classes={classes}
+              user={{
+                fullname: "PlayStation",
+                username: "@PlayStation",
+                avatarURL:
+                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
+              }}
+              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
+            />
+             <Tweet
               classes={classes}
               user={{
                 fullname: "PlayStation",
