@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHomeStyles } from "../pages/Home";
 import EmotionIcon from "@material-ui/icons/InsertEmoticonOutlined";
 import ImageIcon from "@material-ui/icons/ImageOutlined";
@@ -24,17 +24,18 @@ const MakeTweet: React.FC<MakeTweetProps> = ({
   const [value, setValue] = useState<number>(0);
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
+  useEffect(() => {
+    if (tweetText.length) {
+      setIsEmpty(false);
+      setValue(tweetText.length / 5);
+    } else {
+      setIsEmpty(true);
+      setValue(tweetText.length / 5);
+    }
+  }, [tweetText.length])
+
   const tweetTextHandle = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     setTweetText(e.target.value);
- 
-    if (tweetText.length) {
-        setIsEmpty(false);
-        setValue(tweetText.length / 5);
-      } else {
-        setIsEmpty(true);
-        setValue(tweetText.length / 5);
-      }
-   
   };
 
   return (
@@ -98,7 +99,7 @@ const MakeTweet: React.FC<MakeTweetProps> = ({
                   </div>
                 )}
 
-                <Button variant="contained" color="primary" disabled={isEmpty}>
+                <Button className={classes.tweetButtonSmall} variant="contained" color="primary" disabled={isEmpty}>
                   Твитнуть
                 </Button>
               </div>

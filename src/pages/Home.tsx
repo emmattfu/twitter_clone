@@ -145,6 +145,12 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       fontSize: 15,
       marginTop: 25,
     },
+    tweetButtonSmall: {
+      "&.Mui-disabled": {
+        backgroundColor: "#8ED0F8",
+        color: 'white'
+      }
+    }
   })
 );
 
