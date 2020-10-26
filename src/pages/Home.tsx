@@ -19,6 +19,7 @@ import { Tweet, HomeList, MakeTweet } from "../components";
 import SearchIcon from "@material-ui/icons/Search";
 import CleanInputIcon from "@material-ui/icons/HighlightOff";
 import MoreIcon from "@material-ui/icons/MoreHoriz";
+import classNames from 'classnames'
 
 export const useHomeStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -154,8 +155,23 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       },
     },
     forYou: {
-      display: 'flex',
-      justifyContent: 'space-between'
+      display: "flex",
+      justifyContent: "space-between",
+      backgroundColor: "#F5F8FA",
+      fontSize: 19,
+      fontWeight: 800,
+      padding: 10
+    },
+    forYouRounded: {
+      borderRadius: "15px 15px 0 0"
+    },
+    forYouGreyText: {
+      fontSize: 13,
+      color: "rgb(101, 119, 134)"
+    },
+    forYouBoldText: {
+      fontSize: 15,
+      fontWeight: 700
     }
   })
 );
@@ -163,10 +179,16 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
 const CssTextField = withStyles({
   root: {
     marginTop: 5,
-    border: "1px solid grey",
+    marginBottom: 10,
+    border: "1px solid #E6ECF0",
     padding: "5px 10px",
     borderRadius: 30,
-    backgroundColor: "grey",
+    backgroundColor: "#E6ECF0",
+    fontSize: 15,
+    color: "rgb(20, 23, 26)",
+    "& svg": {
+      color: "#657786",
+    },
     "&:focus-within": {
       backgroundColor: "white",
       borderColor: "rgb(26, 145, 218)",
@@ -287,7 +309,6 @@ const Home = () => {
           </Paper>
         </Grid>
         <Grid item xs={3}>
-          {/* <HomeSearchInput id="input-with-icon-textfield" fullWidth /> */}
           <CssTextField
             placeholder="Поиск в Твиттере"
             fullWidth
@@ -304,23 +325,20 @@ const Home = () => {
               ),
             }}
           />
-          <div>
-            <Typography variant="h6">Актуальные темы для вас</Typography>
+          <div style={{width: 317}}>
+            <Typography className={classNames(classes.forYou, classes.forYouRounded)} variant="h6">Актуальные темы для вас</Typography>
             <Paper className={classes.forYou}>
               <div>
-                <Typography>
+                <Typography className={classes.forYouGreyText}>
                   <span>Праздники</span>&nbsp;
                   <span>·</span>&nbsp;
                   <span>Актуально</span>
                 </Typography>
                 <Typography variant="h6">Halloween</Typography>
-                <Typography>Твитов: 674 тис.</Typography>
+                <Typography className={classes.forYouGreyText}>Твитов: 674 тис.</Typography>
               </div>
               <div>
-                <IconButton
-                  color="primary"
-                  component="span"
-                >
+                <IconButton color="primary" component="span">
                   <MoreIcon />
                 </IconButton>
               </div>

@@ -17,7 +17,7 @@ interface HomeListProps {
 
 const HomeList: React.FC<HomeListProps> = ({classes}:HomeListProps):React.ReactElement => {
     return (
-        <div style={{position: 'fixed'}}>
+        <div style={{position: 'sticky', top: 0}}>
             <ul>
             <li>
               <IconButton aria-label="delete">
