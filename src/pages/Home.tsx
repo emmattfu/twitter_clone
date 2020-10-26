@@ -158,12 +158,26 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       display: "flex",
       justifyContent: "space-between",
       backgroundColor: "#F5F8FA",
+      padding: 10,
+      cursor: 'pointer',
+      "&:hover": {
+        backgroundColor: "#F0F3F5"
+      }
+    },
+    forYouRoundedTop: {
+      borderRadius: "15px 15px 0 0",
       fontSize: 19,
       fontWeight: 800,
-      padding: 10
+      cursor: 'auto',
+      "&:hover": {
+        backgroundColor: "#F5F8FA"
+      }
     },
-    forYouRounded: {
-      borderRadius: "15px 15px 0 0"
+    forYouRoundedBottom: {
+      borderRadius: "0 0 15px 15px",
+      fontSize: 15,
+      fontWeight: 400,
+      color: "rgb(29, 161, 242)"
     },
     forYouGreyText: {
       fontSize: 13,
@@ -326,7 +340,7 @@ const Home = () => {
             }}
           />
           <div style={{width: 317}}>
-            <Typography className={classNames(classes.forYou, classes.forYouRounded)} variant="h6">Актуальные темы для вас</Typography>
+            <Typography className={classNames(classes.forYou, classes.forYouRoundedTop)} variant="h6">Актуальные темы для вас</Typography>
             <Paper className={classes.forYou}>
               <div>
                 <Typography className={classes.forYouGreyText}>
@@ -343,6 +357,7 @@ const Home = () => {
                 </IconButton>
               </div>
             </Paper>
+            <Typography className={classNames(classes.forYou, classes.forYouRoundedBottom)}>Показать еще</Typography>
           </div>
         </Grid>
       </Grid>
