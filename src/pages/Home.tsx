@@ -2,8 +2,10 @@ import React from "react";
 import {
   Container,
   Typography,
-  InputBase,
   Paper,
+  InputAdornment,
+  TextField,
+  IconButton,
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -14,7 +16,9 @@ import {
 
 import Grid from "@material-ui/core/Grid";
 import { Tweet, HomeList, MakeTweet } from "../components";
-
+import SearchIcon from "@material-ui/icons/Search";
+import CleanInputIcon from "@material-ui/icons/HighlightOff";
+import MoreIcon from "@material-ui/icons/MoreHoriz";
 
 export const useHomeStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,7 +57,7 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       fontWeight: 400,
     },
     homeListText: {
-      fontSize: 19,
+      fontSize: 18,
       color: "black",
       fontWeight: 700,
       marginLeft: 20,
@@ -91,7 +95,7 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       resize: "none",
       fontSize: 19,
       lineHeight: 1.5,
-      fontFamily: 'Segoe UI',
+      fontFamily: "Segoe UI",
       "&:focus": {
         outline: "none",
       },
@@ -105,12 +109,12 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       },
     },
     homeMakeTweetBottomRight: {
-      position: 'relative',
+      position: "relative",
       display: "flex",
       alignItems: "center",
     },
     homeMakeTweetPlus: {
-      position: 'relative',
+      position: "relative",
       border: "1px solid #2FA9F3",
       borderRadius: "50%",
       width: 30,
@@ -118,28 +122,26 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       cursor: "pointer",
       margin: "0 10px",
       "&:hover": {
-        backgroundColor: "#EDF0F2"
-      }
+        backgroundColor: "#EDF0F2",
+      },
     },
     homeMakeTweetPlusIner: {
       color: "#2FA9F3",
       fontSize: 35,
       fontWeight: 100,
-      position: 'absolute',
+      position: "absolute",
       top: -12,
-      left: 3
+      left: 3,
     },
     progressBG: {
       color: "#E6ECF0",
       marginRight: 10,
     },
     progressTop: {
-      position: 'absolute',
-      marginRight: 10
+      position: "absolute",
+      marginRight: 10,
     },
-    homeMakedevideLine: {
-     
-    },
+    homeMakedevideLine: {},
     tweetButton: {
       height: 45,
       fontSize: 15,
@@ -148,25 +150,45 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
     tweetButtonSmall: {
       "&.Mui-disabled": {
         backgroundColor: "#8ED0F8",
-        color: 'white'
-      }
+        color: "white",
+      },
+    },
+    forYou: {
+      display: 'flex',
+      justifyContent: 'space-between'
     }
   })
 );
 
-const HomeSearchInput = withStyles((theme: Theme) =>
-  createStyles({
-    input: {
-      borderRadius: 30,
-      backgroundColor: "#E6ECF0",
-      height: 45,
-      padding: 0,
+const CssTextField = withStyles({
+  root: {
+    marginTop: 5,
+    border: "1px solid grey",
+    padding: "5px 10px",
+    borderRadius: 30,
+    backgroundColor: "grey",
+    "&:focus-within": {
+      backgroundColor: "white",
+      borderColor: "rgb(26, 145, 218)",
+      "& svg": {
+        color: "rgb(26, 145, 218)",
+      },
     },
-  })
-)(InputBase);
+    "& .MuiInput-underline:before": {
+      borderBottom: "none",
+    },
+    "& .MuiInput-underline:hover:before": {
+      borderBottom: "none",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottom: "none",
+    },
+  },
+})(TextField);
 
 const Home = () => {
   const classes = useHomeStyles();
+  const [value, setValue] = React.useState<string>("");
 
   return (
     <Container maxWidth="lg">
@@ -192,7 +214,7 @@ const Home = () => {
               }}
               text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
             />
-             <Tweet
+            <Tweet
               classes={classes}
               user={{
                 fullname: "PlayStation",
@@ -202,7 +224,7 @@ const Home = () => {
               }}
               text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
             />
-             <Tweet
+            <Tweet
               classes={classes}
               user={{
                 fullname: "PlayStation",
@@ -212,7 +234,7 @@ const Home = () => {
               }}
               text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
             />
-             <Tweet
+            <Tweet
               classes={classes}
               user={{
                 fullname: "PlayStation",
@@ -222,7 +244,7 @@ const Home = () => {
               }}
               text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
             />
-             <Tweet
+            <Tweet
               classes={classes}
               user={{
                 fullname: "PlayStation",
@@ -232,7 +254,7 @@ const Home = () => {
               }}
               text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
             />
-             <Tweet
+            <Tweet
               classes={classes}
               user={{
                 fullname: "PlayStation",
@@ -242,7 +264,7 @@ const Home = () => {
               }}
               text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
             />
-             <Tweet
+            <Tweet
               classes={classes}
               user={{
                 fullname: "PlayStation",
@@ -252,7 +274,7 @@ const Home = () => {
               }}
               text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
             />
-             <Tweet
+            <Tweet
               classes={classes}
               user={{
                 fullname: "PlayStation",
@@ -265,7 +287,45 @@ const Home = () => {
           </Paper>
         </Grid>
         <Grid item xs={3}>
-          <HomeSearchInput id="input-with-icon-textfield" fullWidth />
+          {/* <HomeSearchInput id="input-with-icon-textfield" fullWidth /> */}
+          <CssTextField
+            placeholder="Поиск в Твиттере"
+            fullWidth
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <CleanInputIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <div>
+            <Typography variant="h6">Актуальные темы для вас</Typography>
+            <Paper className={classes.forYou}>
+              <div>
+                <Typography>
+                  <span>Праздники</span>&nbsp;
+                  <span>·</span>&nbsp;
+                  <span>Актуально</span>
+                </Typography>
+                <Typography variant="h6">Halloween</Typography>
+                <Typography>Твитов: 674 тис.</Typography>
+              </div>
+              <div>
+                <IconButton
+                  color="primary"
+                  component="span"
+                >
+                  <MoreIcon />
+                </IconButton>
+              </div>
+            </Paper>
+          </div>
         </Grid>
       </Grid>
     </Container>
