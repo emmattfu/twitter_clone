@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useHomeStyles } from "../pages/Home";
+import React, { useState } from "react";
+import { useHomeStyles } from "../pages/Home/theme";
 import EmotionIcon from "@material-ui/icons/InsertEmoticonOutlined";
 import ImageIcon from "@material-ui/icons/ImageOutlined";
 import CalendarIcon from "@material-ui/icons/DateRangeOutlined";
@@ -21,22 +21,16 @@ const MakeTweet: React.FC<MakeTweetProps> = ({
   classes,
 }: MakeTweetProps): React.ReactElement => {
   const [tweetText, setTweetText] = useState<string>("");
-  const [value, setValue] = useState<number>(0);
-  const [isEmpty, setIsEmpty] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (tweetText.length) {
-      setIsEmpty(false);
-      setValue(tweetText.length / 5);
-    } else {
-      setIsEmpty(true);
-      setValue(tweetText.length / 5);
-    }
-  }, [tweetText.length])
+  const textLimit: number = (tweetText.length/280) * 100;
+  const textCount = 280 - tweetText.length
 
   const tweetTextHandle = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    setTweetText(e.target.value);
+      setTweetText(e.target.value);
   };
+
+  const handleAddTweet = ():void => {
+    setTweetText('')
+  }
 
   return (
     <Paper className={classes.homeMakeTweet}>
@@ -77,8 +71,10 @@ const MakeTweet: React.FC<MakeTweetProps> = ({
                   <CalendarIcon />
                 </IconButton>
               </div>
-              <div className={classes.homeMakeTweetBottomRight}>
-                {!isEmpty && (
+              <div className={classes.homeMakeTweetBottomRight}  style={textLimit > 100 ? {color: "red"} : undefined}>
+                {tweetText && (
+                  <>
+                  <div className={classes.tweetTextCount}>{textCount}</div>
                   <div className={classes.homeMakeTweetBottomRight}>
                     <CircularProgress
                       className={classes.progressBG}
@@ -90,16 +86,18 @@ const MakeTweet: React.FC<MakeTweetProps> = ({
                       className={classes.progressTop}
                       variant="static"
                       size={20}
-                      value={value}
+                      value={textLimit >= 100 ? 100 : textLimit}
+                      style={textLimit > 100 ? {color: "red"} : undefined}
                     />
                     <div className={classes.homeMakedevideLine}></div>
                     <div className={classes.homeMakeTweetPlus}>
                       <div className={classes.homeMakeTweetPlusIner}>+</div>
                     </div>
                   </div>
+                  </>
                 )}
 
-                <Button className={classes.tweetButtonSmall} variant="contained" color="primary" disabled={isEmpty}>
+                <Button onClick={handleAddTweet} className={classes.tweetButtonSmall} variant="contained" color="primary" disabled={tweetText.length === 0 || textLimit > 100}>
                   Твитнуть
                 </Button>
               </div>

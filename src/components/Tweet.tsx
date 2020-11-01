@@ -5,7 +5,7 @@ import RepeatIcon from "@material-ui/icons/Repeat";
 import LikeIcon from "@material-ui/icons/FavoriteBorder";
 import ShareIcon from "@material-ui/icons/ReplyOutlined";
 import classNames from "classnames";
-import { useHomeStyles } from "../pages/Home";
+import { useHomeStyles } from "../pages/Home/theme";
 
 interface TweetProps {
   classes: ReturnType<typeof useHomeStyles>;

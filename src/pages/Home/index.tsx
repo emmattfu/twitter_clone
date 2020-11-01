@@ -5,190 +5,19 @@ import {
   Paper,
   InputAdornment,
   TextField,
-  IconButton,
 } from "@material-ui/core";
 import {
-  makeStyles,
-  createStyles,
-  Theme,
   withStyles,
 } from "@material-ui/core/styles";
 
 import Grid from "@material-ui/core/Grid";
-import { Tweet, HomeList, MakeTweet } from "../components";
+import { Tweet, HomeList, MakeTweet, ForYouBlock } from "../../components";
 import SearchIcon from "@material-ui/icons/Search";
 import CleanInputIcon from "@material-ui/icons/HighlightOff";
-import MoreIcon from "@material-ui/icons/MoreHoriz";
+import { NavLink } from "react-router-dom";
 import classNames from 'classnames'
+import { useHomeStyles } from "./theme";
 
-export const useHomeStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    tweetsWrapper: {
-      height: "100%",
-      borderBottom: "none",
-      borderTop: "none",
-    },
-    tweetsHeaderText: {
-      padding: "10px 15px",
-      fontSize: 19,
-      fontWeight: 800,
-    },
-    tweetsHeader: {
-      borderLeft: "none",
-      borderRight: "none",
-      borderTop: "none",
-    },
-    tweet: {
-      cursor: "pointer",
-      "&:hover": {
-        backgroundColor: "rgb(245, 248, 250)",
-      },
-    },
-    tweetFooter: {
-      display: "flex",
-      justifyContent: "space-between",
-      width: 400,
-      marginLeft: -10,
-    },
-    tweetFooterIcon: {
-      fontSize: 20,
-    },
-    tweetFooterNumber: {
-      fontSize: 13,
-      fontWeight: 400,
-    },
-    homeListText: {
-      fontSize: 18,
-      color: "black",
-      fontWeight: 700,
-      marginLeft: 20,
-    },
-    homeListTextIcon: {
-      fontSize: 32,
-      color: "black",
-      "&:hover": {
-        color: "rgb(29, 161, 242)",
-      },
-    },
-    homeListTextIconBird: {
-      fontSize: 32,
-      color: "primary",
-    },
-    homeListButton: {
-      "&:hover": {
-        backgroundColor: "rgba(29, 161, 242, .1)",
-        borderRadius: 30,
-        paddingRight: 40,
-        "& h6": {
-          color: "rgb(29, 161, 242)",
-        },
-        "& svg": {
-          color: "rgb(29, 161, 242)",
-        },
-      },
-    },
-    homeMakeTweet: {
-      padding: "15px 15px",
-    },
-    homeMakeTweetForm: {
-      width: "100%",
-      border: "none",
-      resize: "none",
-      fontSize: 19,
-      lineHeight: 1.5,
-      fontFamily: "Segoe UI",
-      "&:focus": {
-        outline: "none",
-      },
-    },
-    homeMakeTweetBottom: {
-      marginLeft: -5,
-      display: "flex",
-      justifyContent: "space-between",
-      "& .MuiIconButton-root": {
-        padding: 6,
-      },
-    },
-    homeMakeTweetBottomRight: {
-      position: "relative",
-      display: "flex",
-      alignItems: "center",
-    },
-    homeMakeTweetPlus: {
-      position: "relative",
-      border: "1px solid #2FA9F3",
-      borderRadius: "50%",
-      width: 30,
-      height: 30,
-      cursor: "pointer",
-      margin: "0 10px",
-      "&:hover": {
-        backgroundColor: "#EDF0F2",
-      },
-    },
-    homeMakeTweetPlusIner: {
-      color: "#2FA9F3",
-      fontSize: 35,
-      fontWeight: 100,
-      position: "absolute",
-      top: -12,
-      left: 3,
-    },
-    progressBG: {
-      color: "#E6ECF0",
-      marginRight: 10,
-    },
-    progressTop: {
-      position: "absolute",
-      marginRight: 10,
-    },
-    homeMakedevideLine: {},
-    tweetButton: {
-      height: 45,
-      fontSize: 15,
-      marginTop: 25,
-    },
-    tweetButtonSmall: {
-      "&.Mui-disabled": {
-        backgroundColor: "#8ED0F8",
-        color: "white",
-      },
-    },
-    forYou: {
-      display: "flex",
-      justifyContent: "space-between",
-      backgroundColor: "#F5F8FA",
-      padding: 10,
-      cursor: 'pointer',
-      "&:hover": {
-        backgroundColor: "#F0F3F5"
-      }
-    },
-    forYouRoundedTop: {
-      borderRadius: "15px 15px 0 0",
-      fontSize: 19,
-      fontWeight: 800,
-      cursor: 'auto',
-      "&:hover": {
-        backgroundColor: "#F5F8FA"
-      }
-    },
-    forYouRoundedBottom: {
-      borderRadius: "0 0 15px 15px",
-      fontSize: 15,
-      fontWeight: 400,
-      color: "rgb(29, 161, 242)"
-    },
-    forYouGreyText: {
-      fontSize: 13,
-      color: "rgb(101, 119, 134)"
-    },
-    forYouBoldText: {
-      fontSize: 15,
-      fontWeight: 700
-    }
-  })
-);
 
 const CssTextField = withStyles({
   root: {
@@ -228,18 +57,20 @@ const Home = () => {
 
   return (
     <Container maxWidth="lg">
-      <Grid container spacing={2}>
-        <Grid item xs={3} style={{ padding: "0 40px" }}>
+      <Grid container spacing={3} style={{justifyContent: "center"}}>
+        <Grid item xs={1} lg={3} style={{ padding: "0 40px" }}>
           <HomeList classes={classes} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} lg={6}>
           <Paper className={classes.tweetsWrapper} variant="outlined">
-            <Paper className={classes.tweetsHeader} variant="outlined">
+            <Paper className={classNames(classes.tweetsHeader,classes.homeHeader)} variant="outlined">
               <Typography className={classes.tweetsHeaderText} variant="h6">
                 Главная
               </Typography>
             </Paper>
+
             <MakeTweet classes={classes} />
+
             <Tweet
               classes={classes}
               user={{
@@ -322,7 +153,8 @@ const Home = () => {
             />
           </Paper>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={3} lg={3}>
+          <div style={{position:"sticky", top:0}}>
           <CssTextField
             placeholder="Поиск в Твиттере"
             fullWidth
@@ -339,25 +171,17 @@ const Home = () => {
               ),
             }}
           />
-          <div style={{width: 317}}>
-            <Typography className={classNames(classes.forYou, classes.forYouRoundedTop)} variant="h6">Актуальные темы для вас</Typography>
-            <Paper className={classes.forYou}>
-              <div>
-                <Typography className={classes.forYouGreyText}>
-                  <span>Праздники</span>&nbsp;
-                  <span>·</span>&nbsp;
-                  <span>Актуально</span>
-                </Typography>
-                <Typography variant="h6">Halloween</Typography>
-                <Typography className={classes.forYouGreyText}>Твитов: 674 тис.</Typography>
-              </div>
-              <div>
-                <IconButton color="primary" component="span">
-                  <MoreIcon />
-                </IconButton>
-              </div>
-            </Paper>
-            <Typography className={classNames(classes.forYou, classes.forYouRoundedBottom)}>Показать еще</Typography>
+          <ForYouBlock classes={classes} title="Актуальные темы для вас"/>
+          <ForYouBlock classes={classes} title="Кого читать"/>
+          
+          <ul style={{marginLeft:10}}>
+            <li><NavLink to="/" className={classNames(classes.forYouGreyText, classes.underlined)}>Условия предоставления услуг</NavLink></li>
+            <li><NavLink to="/" className={classNames(classes.forYouGreyText, classes.underlined)}>Политика конфиденциальности</NavLink></li>
+            <li><NavLink to="/" className={classNames(classes.forYouGreyText, classes.underlined)}>Политика в отношении файлов cookie</NavLink></li>
+            <li><NavLink to="/" className={classNames(classes.forYouGreyText, classes.underlined)}>Условия предоставления услуг</NavLink></li>
+            <li><NavLink to="/" className={classNames(classes.forYouGreyText, classes.underlined)}>Информация о рекламе</NavLink></li>
+            <li className={classes.forYouGreyText}>© Twitter, Inc., 2020.</li>
+          </ul>
           </div>
         </Grid>
       </Grid>
