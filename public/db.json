@@ -1,0 +1,100 @@
+{
+    "tweets":[
+        {
+            "id": "5fad8f7f627a472aa5764bb1",
+            "user": {
+              "fullname": "Bird Mccarty",
+              "username": "Zimmerman",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+            },
+            "text": "Culpa qui Lorem duis ad esse exercitation ex aliquip anim ipsum ut Lorem aute anim. Nisi pariatur veniam proident in eiusmod occaecat eiusmod do qui tempor commodo ut consectetur. Exercitation est nostrud nostrud elit pariatur sint culpa. Officia culpa labore elit ullamco do duis veniam voluptate dolor reprehenderit excepteur pariatur. Sunt amet veniam et minim dolor laboris occaecat deserunt incididunt."
+          },
+          {
+            "id": "5fad8f7f4a6952fec2869ab3",
+            "user": {
+              "fullname": "Brigitte Huffman",
+              "username": "Franco",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?4"
+            },
+            "text": "Exercitation reprehenderit Lorem tempor excepteur excepteur magna occaecat. Enim minim fugiat minim consectetur eiusmod qui et. Ad elit reprehenderit ex tempor aute. Aliquip incididunt laborum culpa dolore duis tempor amet ut exercitation. Ut do cillum elit sint aliqua."
+          },
+          {
+            "id": "5fad8f7f99b590c58f9d1f5f",
+            "user": {
+              "fullname": "Graham Baird",
+              "username": "Aileen",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+            },
+            "text": "Ea est ut irure mollit nulla nulla esse. Ea cupidatat tempor enim ex mollit culpa deserunt dolor aliquip ad incididunt deserunt. Do incididunt dolore aliquip deserunt laboris ipsum fugiat elit nostrud elit do amet eu veniam. Enim voluptate qui veniam commodo excepteur eu ipsum nostrud aliquip consectetur. Occaecat duis anim velit labore eiusmod cillum reprehenderit consequat minim amet officia ullamco laboris non."
+          },
+          {
+            "id": "5fad8f7f2397b0e2d1f3fc88",
+            "user": {
+              "fullname": "Madeline Harrington",
+              "username": "Cross",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+            },
+            "text": "Laborum elit nisi proident reprehenderit adipisicing ullamco do occaecat exercitation cupidatat sint. Amet cillum qui exercitation anim in ipsum qui velit enim. Cillum ut Lorem laboris nulla aliqua exercitation enim et tempor pariatur consectetur excepteur minim consequat. Minim sint id eu ex esse minim aliqua minim non non. Dolor in culpa commodo nulla et Lorem reprehenderit enim est aute nisi Lorem."
+          },
+          {
+            "id": "5fad8f7fe64de75517111be6",
+            "user": {
+              "fullname": "Turner Greene",
+              "username": "Denise",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?2"
+            },
+            "text": "Duis commodo Lorem minim excepteur cupidatat exercitation veniam non nisi aliquip. Veniam enim dolore mollit sunt minim eiusmod dolore irure tempor anim irure id ex incididunt. Officia pariatur non qui exercitation aute. Ad amet elit eiusmod ad. Cupidatat eiusmod magna ex aute do officia consectetur consequat eiusmod eu labore."
+          },
+          {
+            "id": "5fad8f7f9aeb34f354f37fdc",
+            "user": {
+              "fullname": "Fuller Carr",
+              "username": "Shana",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?2"
+            },
+            "text": "Nisi voluptate ut et qui cupidatat ut. Exercitation aliquip et sit anim amet deserunt dolore quis sunt cillum ad ullamco laboris elit. Est laboris non culpa reprehenderit. Do eu cupidatat incididunt ad voluptate. Tempor pariatur mollit nostrud non veniam proident ut ullamco ad velit voluptate fugiat ullamco."
+          },
+          {
+            "id": "5fad8f7fc4c6602f64fdd94a",
+            "user": {
+              "fullname": "Michael Chang",
+              "username": "Esperanza",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?4"
+            },
+            "text": "Incididunt velit adipisicing est occaecat adipisicing commodo irure commodo adipisicing veniam tempor non ex. Ad est mollit minim minim minim consectetur esse qui pariatur nisi. Nostrud quis occaecat amet exercitation ipsum id. Ea eiusmod dolor occaecat adipisicing elit exercitation non. Dolore aute deserunt commodo exercitation veniam velit non enim elit excepteur cupidatat est anim."
+          },
+          {
+            "id": "5fad8f7fde2b51d06cf5d2f5",
+            "user": {
+              "fullname": "Ebony Conway",
+              "username": "Ellen",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+            },
+            "text": "Eu est duis in pariatur adipisicing mollit officia adipisicing in aliquip amet aute. Ullamco reprehenderit ad reprehenderit aliqua excepteur elit. Quis qui consequat mollit qui labore amet. Velit incididunt do laborum pariatur et ullamco sint nisi cillum ea voluptate pariatur. Mollit adipisicing excepteur mollit excepteur id veniam velit cupidatat proident cillum id qui sit."
+          },
+          {
+            "id": "5fad8f7fb770938cff0428a8",
+            "user": {
+              "fullname": "Tisha Frank",
+              "username": "Schultz",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?1"
+            },
+            "text": "Anim adipisicing reprehenderit consectetur sint nulla. Qui fugiat amet laborum sint nostrud officia ullamco laboris velit dolore. Id labore dolore eiusmod dolore consectetur proident labore mollit in qui. Occaecat officia ex voluptate ea pariatur. Non aliquip ipsum laboris tempor irure et proident cillum incididunt irure do et."
+          },
+          {
+            "id": "5fad8f7f0f63ccee450014fd",
+            "user": {
+              "fullname": "Jean Page",
+              "username": "Kramer",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?4"
+            },
+            "text": "Commodo mollit magna est ex. Est consectetur ad laboris commodo ullamco. Ea tempor tempor id quis deserunt excepteur nulla mollit tempor irure veniam elit reprehenderit quis. Ut irure est aliqua qui adipisicing sit elit in exercitation sit cupidatat. Nulla irure deserunt exercitation dolor enim."
+          }
+    ],
+
+    "user": {
+        "fullname": "Max Novikov",
+        "username": "MaxNovikov",
+        "avatarUrl": "https://pbs.twimg.com/profile_images/1284435976031526913/mv3-EtpJ_400x400.jpg"
+    }
+}

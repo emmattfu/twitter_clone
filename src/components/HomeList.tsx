@@ -13,17 +13,17 @@ import PersonIcon from "@material-ui/icons/PersonOutline";
 import MoreIcon from "@material-ui/icons/MoreHorizOutlined";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import CloseIcon from '@material-ui/icons/Close';
 import MakeTweet from "./MakeTweet";
 
 
 interface HomeListProps {
   classes: ReturnType<typeof useHomeStyles>;
+  reloadTweets: () => void
 }
 
 const HomeList: React.FC<HomeListProps> = ({
-  classes,
+  classes, reloadTweets
 }: HomeListProps): React.ReactElement => {
   const [open, setOpen] = React.useState<boolean>(false);
 
@@ -40,16 +40,17 @@ const HomeList: React.FC<HomeListProps> = ({
     <div style={{ position: "sticky", top: 0 }}>
       <ul>
         <li>
-          <IconButton aria-label="delete">
+          <IconButton>
             <TwitterIcon
               className={classes.homeListTextIconBird}
               color="primary"
+              onClick={()=> reloadTweets()}
             />
           </IconButton>
         </li>
         <li>
           {" "}
-          <IconButton className={classes.homeListButton} aria-label="delete">
+          <IconButton className={classes.homeListButton}>
             <HomeIcon className={classes.homeListTextIcon} />
             <Hidden mdDown>
               <Typography className={classes.homeListText} variant="h6">
@@ -60,7 +61,7 @@ const HomeList: React.FC<HomeListProps> = ({
         </li>
         <li>
           {" "}
-          <IconButton className={classes.homeListButton} aria-label="delete">
+          <IconButton className={classes.homeListButton}>
             <SearchIcon className={classes.homeListTextIcon} />
             <Hidden mdDown>
               <Typography className={classes.homeListText} variant="h6">
@@ -71,7 +72,7 @@ const HomeList: React.FC<HomeListProps> = ({
         </li>
         <li>
           {" "}
-          <IconButton className={classes.homeListButton} aria-label="delete">
+          <IconButton className={classes.homeListButton}>
             <NotificationIcon className={classes.homeListTextIcon} />
             <Hidden mdDown>
               <Typography className={classes.homeListText} variant="h6">
@@ -82,7 +83,7 @@ const HomeList: React.FC<HomeListProps> = ({
         </li>
         <li>
           {" "}
-          <IconButton className={classes.homeListButton} aria-label="delete">
+          <IconButton className={classes.homeListButton}>
             <MessageIcon className={classes.homeListTextIcon} />
             <Hidden mdDown>
               <Typography className={classes.homeListText} variant="h6">
@@ -93,7 +94,7 @@ const HomeList: React.FC<HomeListProps> = ({
         </li>
         <li>
           {" "}
-          <IconButton className={classes.homeListButton} aria-label="delete">
+          <IconButton className={classes.homeListButton}>
             <BookMarkIcon className={classes.homeListTextIcon} />
             <Hidden mdDown>
               <Typography className={classes.homeListText} variant="h6">
@@ -104,7 +105,7 @@ const HomeList: React.FC<HomeListProps> = ({
         </li>
         <li>
           {" "}
-          <IconButton className={classes.homeListButton} aria-label="delete">
+          <IconButton className={classes.homeListButton}>
             <ListIcon className={classes.homeListTextIcon} />
             <Hidden mdDown>
               <Typography className={classes.homeListText} variant="h6">
@@ -115,7 +116,7 @@ const HomeList: React.FC<HomeListProps> = ({
         </li>
         <li>
           {" "}
-          <IconButton className={classes.homeListButton} aria-label="delete">
+          <IconButton className={classes.homeListButton}>
             <PersonIcon className={classes.homeListTextIcon} />
             <Hidden mdDown>
               <Typography className={classes.homeListText} variant="h6">
@@ -126,7 +127,7 @@ const HomeList: React.FC<HomeListProps> = ({
         </li>
         <li>
           {" "}
-          <IconButton className={classes.homeListButton} aria-label="delete">
+          <IconButton className={classes.homeListButton}>
             <MoreIcon className={classes.homeListTextIcon} />
             <Hidden mdDown>
               <Typography className={classes.homeListText} variant="h6">
@@ -156,7 +157,7 @@ const HomeList: React.FC<HomeListProps> = ({
           </IconButton>
         </DialogTitle>
         <DialogContent dividers>
-          <MakeTweet classes={classes}/>
+          <MakeTweet classes={classes} size={5}/>
         </DialogContent>
       </Dialog>
     </div>

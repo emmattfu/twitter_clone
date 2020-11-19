@@ -12,12 +12,12 @@ interface TweetProps {
   user: {
     fullname: string;
     username: string;
-    avatarURL: string;
+    avatarUrl: string;
   };
   text: string;
 }
 
-const Tweet: React.FC<TweetProps> = ({classes,user,text,}: TweetProps): React.ReactElement => {
+const Tweet: React.FC<TweetProps> = ({classes,user,text}: TweetProps): React.ReactElement => {
   return (
     <div>
       <Paper
@@ -29,7 +29,7 @@ const Tweet: React.FC<TweetProps> = ({classes,user,text,}: TweetProps): React.Re
             <Grid item xs={1}>
               <Avatar
                 alt={`Avatar of ${user.fullname}`}
-                src={user.avatarURL}
+                src={user.avatarUrl}
               />
             </Grid>
             <Grid item xs={11}>

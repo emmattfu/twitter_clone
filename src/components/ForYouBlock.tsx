@@ -16,10 +16,10 @@ import MoreIcon from "@material-ui/icons/MoreHoriz";
 
 const ForYouBlock:React.FC<ForYouBlockProps> = ({classes,title}:ForYouBlockProps):React.ReactElement => {
     return (
-        <>
+      
         <div style={{width: 317, marginBottom: 15}}>
-        <Typography className={classNames(classes.forYou, classes.forYouRoundedTop)} variant="h6">{title}</Typography>
-            <Paper className={classes.forYou}>
+          <Typography className={classNames(classes.forYou, classes.forYouRoundedTop, classes.forYouBorderBottom)} variant="h6">{title}</Typography>
+            <Paper className={classNames(classes.forYou, classes.forYouBorderBottom)}>
               <div>
                 <Typography className={classes.forYouGreyText}>
                   <span>Праздники</span>&nbsp;
@@ -36,10 +36,8 @@ const ForYouBlock:React.FC<ForYouBlockProps> = ({classes,title}:ForYouBlockProps
               </div>
             </Paper>
             <Typography className={classNames(classes.forYou, classes.forYouRoundedBottom)}>Показать еще</Typography>
-        
-            
         </div>
-        </>
+
     )
 }
 

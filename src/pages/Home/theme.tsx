@@ -146,7 +146,7 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
       display: "flex",
       justifyContent: "space-between",
       backgroundColor: "#F5F8FA",
-      padding: 10,
+      padding: "10px 15px",
       cursor: 'pointer',
       "&:hover": {
         backgroundColor: "#F0F3F5"
@@ -174,6 +174,9 @@ export const useHomeStyles = makeStyles((theme: Theme) =>
     forYouBoldText: {
       fontSize: 15,
       fontWeight: 700
+    },
+    forYouBorderBottom: {
+      borderBottom: "2px solid #EDF0F2"
     },
     underlined:{
       textDecoration: "none solid rgb(101, 119, 134)",

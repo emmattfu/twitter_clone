@@ -15,10 +15,11 @@ import {
 
 interface MakeTweetProps {
   classes: ReturnType<typeof useHomeStyles>;
+  size?: number 
 }
 
 const MakeTweet: React.FC<MakeTweetProps> = ({
-  classes,
+  classes, size
 }: MakeTweetProps): React.ReactElement => {
   const [tweetText, setTweetText] = useState<string>("");
   const textLimit: number = (tweetText.length/280) * 100;
@@ -46,6 +47,7 @@ const MakeTweet: React.FC<MakeTweetProps> = ({
               placeholder="Что происходит?"
               value={tweetText}
               onChange={tweetTextHandle}
+              rowsMin={size}
             />
             <div className={classes.homeMakeTweetBottom}>
               <div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback, useEffect} from "react";
 import {
   Container,
   Typography,
@@ -17,6 +17,11 @@ import CleanInputIcon from "@material-ui/icons/HighlightOff";
 import { NavLink } from "react-router-dom";
 import classNames from 'classnames'
 import { useHomeStyles } from "./theme";
+import { useDispatch, useSelector } from "react-redux";
+import { clearTweets, getTweets } from "../../store/ducks/tweets/actionCreators";
+import {RootState} from "../../store/store";
+import GreyDevider from "../../components/GreyDevider";
+
 
 
 const CssTextField = withStyles({
@@ -53,13 +58,26 @@ const CssTextField = withStyles({
 
 const Home = () => {
   const classes = useHomeStyles();
-  const [value, setValue] = React.useState<string>("");
+  const dispatch = useDispatch();
+  const tweets = useSelector((state: RootState) => state.tweets.items)
+
+  const handleLoadingTweets = useCallback(() => {
+      dispatch(clearTweets())
+      dispatch(getTweets())
+    },
+    [dispatch],
+  )
+
+  useEffect(() => {
+  
+    handleLoadingTweets()
+  }, [handleLoadingTweets])
 
   return (
     <Container maxWidth="lg">
       <Grid container spacing={3} style={{justifyContent: "center"}}>
         <Grid item xs={1} lg={3} style={{ padding: "0 40px" }}>
-          <HomeList classes={classes} />
+          <HomeList classes={classes} reloadTweets={handleLoadingTweets}/>
         </Grid>
         <Grid item xs={6} lg={6}>
           <Paper className={classes.tweetsWrapper} variant="outlined">
@@ -70,87 +88,10 @@ const Home = () => {
             </Paper>
 
             <MakeTweet classes={classes} />
+            <GreyDevider />
 
-            <Tweet
-              classes={classes}
-              user={{
-                fullname: "PlayStation",
-                username: "@PlayStation",
-                avatarURL:
-                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
-              }}
-              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
-            />
-            <Tweet
-              classes={classes}
-              user={{
-                fullname: "PlayStation",
-                username: "@PlayStation",
-                avatarURL:
-                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
-              }}
-              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
-            />
-            <Tweet
-              classes={classes}
-              user={{
-                fullname: "PlayStation",
-                username: "@PlayStation",
-                avatarURL:
-                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
-              }}
-              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
-            />
-            <Tweet
-              classes={classes}
-              user={{
-                fullname: "PlayStation",
-                username: "@PlayStation",
-                avatarURL:
-                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
-              }}
-              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
-            />
-            <Tweet
-              classes={classes}
-              user={{
-                fullname: "PlayStation",
-                username: "@PlayStation",
-                avatarURL:
-                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
-              }}
-              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
-            />
-            <Tweet
-              classes={classes}
-              user={{
-                fullname: "PlayStation",
-                username: "@PlayStation",
-                avatarURL:
-                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
-              }}
-              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
-            />
-            <Tweet
-              classes={classes}
-              user={{
-                fullname: "PlayStation",
-                username: "@PlayStation",
-                avatarURL:
-                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
-              }}
-              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
-            />
-            <Tweet
-              classes={classes}
-              user={{
-                fullname: "PlayStation",
-                username: "@PlayStation",
-                avatarURL:
-                  "https://pbs.twimg.com/profile_images/1278183948279922690/ybnDHXn7_400x400.jpg",
-              }}
-              text="Hey folks - just wanted to let you know that we’re looking into your feedback on the recent changes to Parties on PS4. Thanks for speaking up - we’ll keep you posted"
-            />
+            {tweets.map(tweet => <Tweet key={tweet.id} classes={classes} user={tweet.user} text={tweet.text}/> )}
+
           </Paper>
         </Grid>
         <Grid item xs={3} lg={3}>
